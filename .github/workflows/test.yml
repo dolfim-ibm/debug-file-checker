@@ -28,7 +28,7 @@ jobs:
 
     - name: Configure CMake
       run: |
-        cmake -S . -B build -Dpybind11_DIR=$(python -m pybind11 --cmakedir) -DPython3_EXECUTABLE=${{ steps.py.outputs.python-path }}
+        cmake -S . -B build -D"pybind11_DIR=$(python -m pybind11 --cmakedir)" -D"Python3_EXECUTABLE=${{ steps.py.outputs.python-path }}"
 
     - name: Build extension
       run: cmake --build build --config Release
