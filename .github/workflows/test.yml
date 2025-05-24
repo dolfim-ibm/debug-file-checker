@@ -19,6 +19,7 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v4
+      id: py
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -27,7 +28,7 @@ jobs:
 
     - name: Configure CMake
       run: |
-        cmake -S . -B build -Dpybind11_DIR=$(python -m pybind11 --cmakedir) -DPython3_EXECUTABLE=$(which python)
+        cmake -S . -B build -Dpybind11_DIR=$(python -m pybind11 --cmakedir) -DPython3_EXECUTABLE=${{ steps.py.outputs.python-path }}
 
     - name: Build extension
       run: cmake --build build --config Release
