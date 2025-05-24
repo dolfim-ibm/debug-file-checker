@@ -31,11 +31,13 @@ jobs:
         cmake -S . -B build -D"pybind11_DIR=$(python -m pybind11 --cmakedir)" -D"Python3_EXECUTABLE=${{ steps.py.outputs.python-path }}"
 
     - name: Build extension
-      run: cmake --build build --config Release
+      run: |
+        cmake --build build --config Release
+        cmake --install build
 
     - name: Run test script
       shell: bash
       run: |
-        cp test.py *.txt build/
+        cp test.py *.txt dist/
         cd build
         python test.py
