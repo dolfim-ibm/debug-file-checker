@@ -34,6 +34,7 @@ jobs:
       run: cmake --build build --config Release
 
     - name: Run test script
+      shell: bash
       run: |
         cp test.py *.txt build/
         cd build
