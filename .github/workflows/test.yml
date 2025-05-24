@@ -39,5 +39,5 @@ jobs:
       shell: bash
       run: |
         cp test.py *.txt dist/
-        cd build
+        cd dist
         python test.py
