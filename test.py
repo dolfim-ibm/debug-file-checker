@@ -1,7 +1,11 @@
 import file_checker
 
-print(f"{file_checker.file_exists('test.txt')=}")
-print(f"{file_checker.file_exists('テスト.txt')=}")
+fname1 = "test.txt"
+fname2_raw = "テスト.txt"
+fname2 = fname2_raw.encode("utf8")
 
-print(f"{file_checker.file_exists_fix('test.txt')=}")
-print(f"{file_checker.file_exists_fix('テスト.txt')=}")
+print(f"{file_checker.file_exists(fname1)=}")
+print(f"{file_checker.file_exists(fname2)=}")
+
+print(f"{file_checker.file_exists_fix(fname1)=}")
+print(f"{file_checker.file_exists_fix(fname2)=}")
